@@ -11,16 +11,17 @@ This repository contains a minimal Clean Architecture setup for a .NET Web API u
 ## Building
 Ensure the .NET 8 SDK is installed. Then run:
 
-```bash
-dotnet build LotusApi2025.sln
-```
+ 
+cd src/Api
+ dotnet build
+ 
 
 ## Running
 Update `appsettings.json` or environment variables with the `Default` connection string for MySQL, then run:
-
-```bash
+ 
 cd src/Api
+ 
 dotnet run
-```
+ 
 
 Swagger UI will be available in development at `/swagger`.
