@@ -24,3 +24,11 @@ dotnet run
 ```
 
 Swagger UI will be available in development at `/swagger`.
+
+## Testing
+
+Run the unit tests:
+
+```bash
+dotnet test
+```
