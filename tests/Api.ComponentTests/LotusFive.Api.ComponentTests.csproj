@@ -12,6 +12,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/Application/Application.csproj" />
+    <ProjectReference Include="..\..\src\Api\LotusFive.Api.csproj" />
   </ItemGroup>
 </Project>

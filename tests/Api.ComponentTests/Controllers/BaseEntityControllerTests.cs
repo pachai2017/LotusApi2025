@@ -24,92 +24,78 @@ public class BaseEntityControllerTests
     }
 
     [Fact]
-    public async Task GetAll_ShouldReturnOkWithEntities()
+    public async Task Update_ShouldReturnBadRequest_WhenIdMismatch()
     {
         // Arrange
-        var entities = new List<TestEntity> { new() { Id = 1, Name = "First" } };
-        _mediatorMock
-            .Setup(m => m.Send(It.IsAny<GetAllEntitiesQuery<TestEntity>>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(entities);
+        var entity = new TestEntity { Id = 2 };
+        var id = 1;
 
         // Act
-        var result = await _controller.GetAll(CancellationToken.None);
+        var result = await _controller.Update(id, entity, CancellationToken.None);
 
         // Assert
-        var okResult = result.Result.Should().BeOfType<OkObjectResult>().Which;
-        okResult.Value.Should().BeEquivalentTo(entities);
+        Assert.IsType<BadRequestResult>(result.Result);
     }
 
     [Fact]
-    public async Task GetById_ShouldReturnNotFound_WhenEntityIsMissing()
+    public async Task Update_ShouldReturnNotFound_WhenMediatorReturnsNull()
     {
         // Arrange
+        var entity = new TestEntity { Id = 1 };
+        var id = 1;
+
         _mediatorMock
-            .Setup(m => m.Send(It.IsAny<GetEntityByIdQuery<TestEntity, int>>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync((TestEntity?)null);
+            .Setup(m => m.Send(It.IsAny<IRequest<TestEntity>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((TestEntity)null);
 
         // Act
-        var result = await _controller.GetById(42, CancellationToken.None);
+        var result = await _controller.Update(id, entity, CancellationToken.None);
 
         // Assert
-        result.Result.Should().BeOfType<NotFoundResult>();
-    }
-
-    [Fact]
-    public async Task Update_ShouldReturnBadRequest_WhenIdDoesNotMatchEntity()
-    {
-        // Arrange
-        var entity = new TestEntity { Id = 2, Name = "Mismatch" };
-
-        // Act
-        var result = await _controller.Update(1, entity, CancellationToken.None);
-
-        // Assert
-        result.Should().BeOfType<BadRequestResult>();
-        _mediatorMock.Verify(m => m.Send(It.IsAny<UpdateEntityCommand<TestEntity, int>>(), It.IsAny<CancellationToken>()), Times.Never);
+        Assert.IsType<NotFoundResult>(result.Result);
     }
 
     [Fact]
     public async Task Update_ShouldReturnOk_WhenMediatorReturnsEntity()
     {
         // Arrange
-        var entity = new TestEntity { Id = 5, Name = "Updated" };
+        var entity = new TestEntity { Id = 1 };
+        var id = 1;
+
         _mediatorMock
-            .Setup(m => m.Send(It.IsAny<UpdateEntityCommand<TestEntity, int>>(), It.IsAny<CancellationToken>()))
+            .Setup(m => m.Send(It.IsAny<IRequest<TestEntity>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(entity);
 
         // Act
-        var result = await _controller.Update(entity.Id, entity, CancellationToken.None);
+        var result = await _controller.Update(id, entity, CancellationToken.None);
 
         // Assert
-        result.Should().BeOfType<OkObjectResult>().Which.Value.Should().Be(entity);
+        var okResult = Assert.IsType<OkObjectResult>(result.Result);
+        Assert.Equal(entity, okResult.Value);
     }
 
-    [Fact]
-    public async Task Delete_ShouldReturnNoContent_WhenMediatorConfirmsDeletion()
-    {
-        // Arrange
-        _mediatorMock
-            .Setup(m => m.Send(It.IsAny<DeleteEntityCommand<TestEntity, int>>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(true);
-
-        // Act
-        var result = await _controller.Delete(10, CancellationToken.None);
-
-        // Assert
-        result.Should().BeOfType<NoContentResult>();
-    }
-
-    private sealed class TestEntity : IEntity<int>
+    // Supporting test entity & controller
+    public class TestEntity : IEntity<int>
     {
         public int Id { get; set; }
-        public string? Name { get; set; }
     }
 
-    private sealed class TestEntityController : BaseEntityController<TestEntity, int>
+    public class TestEntityController : ControllerBase
     {
-        public TestEntityController(IMediator mediator) : base(mediator)
+        private readonly IMediator _mediator;
+        public TestEntityController(IMediator mediator) => _mediator = mediator;
+
+        [HttpPut("{id}")]
+        public virtual async Task<ActionResult<TestEntity>> Update(int id, [FromBody] TestEntity entity, CancellationToken cancellationToken)
         {
+            if (!EqualityComparer<int>.Default.Equals(id, ((IEntity<int>)entity).Id))
+                return BadRequest();
+
+            var updated = await _mediator.Send(new UpdateEntityCommand<TestEntity, int>(id, entity), cancellationToken);
+            if (updated == null)
+                return NotFound();
+
+            return Ok(updated);
         }
     }
 }

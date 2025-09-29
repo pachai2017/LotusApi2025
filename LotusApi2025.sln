@@ -2,19 +2,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "src\Api\Api.csproj", "{C4CE9E9D-2EE3-4E98-9B41-0B406A8C4196}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotusFive.Api", "src\Api\LotusFive.Api.csproj", "{C4CE9E9D-2EE3-4E98-9B41-0B406A8C4196}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Application\Application.csproj", "{40506ECF-869E-47CD-8576-87B9F5672EFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotusFive.Application", "src\Application\LotusFive.Application.csproj", "{40506ECF-869E-47CD-8576-87B9F5672EFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{A74316E6-FB8E-4671-A17B-25D2551A660F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotusFive.Domain", "src\Domain\LotusFive.Domain.csproj", "{A74316E6-FB8E-4671-A17B-25D2551A660F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{AA8C5CFC-C23E-49D4-B82B-2B3852341544}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotusFive.Infrastructure", "src\Infrastructure\LotusFive.Infrastructure.csproj", "{AA8C5CFC-C23E-49D4-B82B-2B3852341544}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "tests\Application.UnitTests\Application.UnitTests.csproj", "{C7D4DA27-FADE-4C81-BDAB-881089AF65F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotusFive.Application.UnitTests", "tests\Application.UnitTests\LotusFive.Application.UnitTests.csproj", "{C7D4DA27-FADE-4C81-BDAB-881089AF65F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.ComponentTests", "tests\Api.ComponentTests\Api.ComponentTests.csproj", "{8A07125E-DFDA-468D-AC50-76D6C90BFA47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotusFive.Api.ComponentTests", "tests\Api.ComponentTests\LotusFive.Api.ComponentTests.csproj", "{8A07125E-DFDA-468D-AC50-76D6C90BFA47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.IntegrationTests", "tests\Api.IntegrationTests\Api.IntegrationTests.csproj", "{7026E4F7-CA0B-4A88-8220-7024F93D73A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotusFive.Api.IntegrationTests", "tests\Api.IntegrationTests\LotusFive.Api.IntegrationTests.csproj", "{7026E4F7-CA0B-4A88-8220-7024F93D73A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -60,5 +60,8 @@ Global
 		{C7D4DA27-FADE-4C81-BDAB-881089AF65F8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{8A07125E-DFDA-468D-AC50-76D6C90BFA47} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{7026E4F7-CA0B-4A88-8220-7024F93D73A3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ACB07721-2F47-4EDA-BD30-DF6F21A2F3EB}
 	EndGlobalSection
 EndGlobal

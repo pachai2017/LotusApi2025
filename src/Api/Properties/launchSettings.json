@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Api": {
+    "LotusFive.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
