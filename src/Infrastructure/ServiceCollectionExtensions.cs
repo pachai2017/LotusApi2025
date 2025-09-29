@@ -1,6 +1,5 @@
-using Application.Interfaces;
+using Application.Common.Interfaces;
 using Infrastructure.Data;
-using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +12,7 @@ namespace Infrastructure
         {
             var connectionString = configuration.GetConnectionString("Default") ?? string.Empty;
             services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
             return services;
         }
     }
