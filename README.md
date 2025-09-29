@@ -18,10 +18,16 @@ cd src/Api
 
 ## Running
 Update `appsettings.json` or environment variables with the `Default` connection string for MySQL, then run:
- 
+
 cd src/Api
- 
+
 dotnet run
- 
+
 
 Swagger UI will be available in development at `/swagger`.
+
+## Authentication
+
+JWT bearer authentication is enabled for the API. Update the `Authentication` section in `appsettings.json` (or override the values with environment variables) with your desired issuer, audience, secret key, token lifetime, and the list of in-memory users allowed to sign in.
+
+To obtain an access token, send a `POST` request to `/api/auth/login` with a JSON body containing `username` and `password`. Use the returned bearer token in the `Authorization` header (`Authorization: Bearer <token>`) for subsequent requests.
