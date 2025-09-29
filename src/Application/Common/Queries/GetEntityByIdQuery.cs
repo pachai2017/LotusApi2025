@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Common;
+using LotusFive.Application.Common.Interfaces;
+using LotusFive.Domain.Common;
 using MediatR;
 
-namespace Application.Common.Queries
+namespace LotusFive.Application.Common.Queries
 {
     public record GetEntityByIdQuery<TEntity, TKey>(TKey Id) : IRequest<TEntity?> where TEntity : class, IEntity<TKey>;
 

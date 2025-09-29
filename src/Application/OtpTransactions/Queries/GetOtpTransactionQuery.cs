@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Entities;
+using LotusFive.Application.Common.Interfaces;
+using LotusFive.Domain.Entities;
 using MediatR;
 
-namespace Application.OtpTransactions.Queries
+namespace LotusFive.Application.OtpTransactions.Queries
 {
     public record GetOtpTransactionQuery(string MobileNo, string Otp) : IRequest<OtpTransaction?>;
 

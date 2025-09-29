@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Application.Common.Interfaces
+namespace LotusFive.Application.Common.Interfaces
 {
     public interface IAppDbContext
     {

@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Commands;
-using Application.Common.Queries;
-using Domain.Common;
+using LotusFive.Application.Common.Commands;
+using LotusFive.Application.Common.Queries;
+using LotusFive.Domain.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace LotusFive.Api.Controllers
 {
     public abstract class BaseEntityController<TEntity, TKey> : ControllerBase where TEntity : class, IEntity<TKey>
     {

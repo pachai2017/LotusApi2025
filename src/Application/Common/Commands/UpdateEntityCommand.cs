@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Common;
+using LotusFive.Application.Common.Interfaces;
+using LotusFive.Domain.Common;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Common.Commands
+namespace LotusFive.Application.Common.Commands
 {
     public record UpdateEntityCommand<TEntity, TKey>(TKey Id, TEntity Entity) : IRequest<TEntity?> where TEntity : class, IEntity<TKey>;
 

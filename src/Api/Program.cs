@@ -1,5 +1,5 @@
-using Application;
-using Infrastructure;
+using LotusFive.Application;
+using LotusFive.Infrastructure;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);

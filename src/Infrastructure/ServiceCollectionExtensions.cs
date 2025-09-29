@@ -1,10 +1,10 @@
-using Application.Common.Interfaces;
-using Infrastructure.Data;
+using LotusFive.Application.Common.Interfaces;
+using LotusFive.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure
+namespace LotusFive.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {

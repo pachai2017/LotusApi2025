@@ -2,7 +2,7 @@ using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application
+namespace LotusFive.Application
 {
     public static class ServiceCollectionExtensions
     {
