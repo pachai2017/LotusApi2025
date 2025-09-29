@@ -18,3 +18,17 @@
 /src/Infrastructure/bin/Debug/net8.0
 /src/Infrastructure/obj/Debug/net8.0
 /src/Infrastructure/obj
+/tests/Api.ComponentTests/bin/Debug/net8.0
+/.vs/ProjectEvaluation/lotusapi2025.metadata.v9.bin
+/.vs/ProjectEvaluation/lotusapi2025.projects.v9.bin
+/.vs/ProjectEvaluation/lotusapi2025.strings.v9.bin
+/tests/Api.ComponentTests/obj
+/tests/Api.IntegrationTests/bin/Debug/net8.0
+/tests/Api.IntegrationTests/obj
+/tests/Application.UnitTests/bin/Debug/net8.0
+/tests/Application.UnitTests/obj/Debug/net8.0
+/tests/Application.UnitTests/obj/Application.UnitTests.csproj.nuget.dgspec.json
+/tests/Application.UnitTests/obj/Application.UnitTests.csproj.nuget.g.props
+/tests/Application.UnitTests/obj/Application.UnitTests.csproj.nuget.g.targets
+/tests/Application.UnitTests/obj/project.assets.json
+/tests/Application.UnitTests/obj/project.nuget.cache
