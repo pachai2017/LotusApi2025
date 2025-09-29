@@ -32,3 +32,5 @@
 /tests/Application.UnitTests/obj/Application.UnitTests.csproj.nuget.g.targets
 /tests/Application.UnitTests/obj/project.assets.json
 /tests/Application.UnitTests/obj/project.nuget.cache
+/src/Application/obj
+/tests/Application.UnitTests/obj
