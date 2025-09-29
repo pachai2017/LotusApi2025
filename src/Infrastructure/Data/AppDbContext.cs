@@ -1,6 +1,7 @@
 using Application.Common.Interfaces;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Infrastructure.Data
 {
@@ -26,6 +27,11 @@ namespace Infrastructure.Data
         public DbSet<FpxBank> FpxBanks => Set<FpxBank>();
         public DbSet<EntrySource> EntrySources => Set<EntrySource>();
         public DbSet<EmailOtpTransaction> EmailOtpTransactions => Set<EmailOtpTransaction>();
+
+        public EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class
+        {
+            return base.Entry(entity);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

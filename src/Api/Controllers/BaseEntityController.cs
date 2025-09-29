@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Application.Common.Commands;
 using Application.Common.Queries;
 using Domain.Common;
@@ -40,6 +42,35 @@ namespace Api.Controllers
         {
             var created = await Mediator.Send(new CreateEntityCommand<TEntity>(entity), cancellationToken);
             return CreatedAtAction(nameof(GetById), new { id = GetEntityId(created) }, created);
+        }
+
+        [HttpPut("{id}")]
+        public virtual async Task<ActionResult<TEntity>> Update(TKey id, [FromBody] TEntity entity, CancellationToken cancellationToken)
+        {
+            if (!EqualityComparer<TKey>.Default.Equals(id, ((IEntity<TKey>)entity).Id))
+            {
+                return BadRequest();
+            }
+
+            var updated = await Mediator.Send(new UpdateEntityCommand<TEntity, TKey>(id, entity), cancellationToken);
+            if (updated == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updated);
+        }
+
+        [HttpDelete("{id}")]
+        public virtual async Task<IActionResult> Delete(TKey id, CancellationToken cancellationToken)
+        {
+            var deleted = await Mediator.Send(new DeleteEntityCommand<TEntity, TKey>(id), cancellationToken);
+            if (!deleted)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
 
         protected virtual object? GetEntityId(TEntity entity)
