@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using Application.Common.Commands;
-using Application.Common.Queries;
-using Application.OtpTransactions.Queries;
-using Domain.Entities;
+using LotusFive.Application.Common.Commands;
+using LotusFive.Application.Common.Queries;
+using LotusFive.Application.OtpTransactions.Queries;
+using LotusFive.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace LotusFive.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

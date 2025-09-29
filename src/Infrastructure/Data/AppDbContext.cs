@@ -1,9 +1,9 @@
-using Application.Common.Interfaces;
-using Domain.Entities;
+using LotusFive.Application.Common.Interfaces;
+using LotusFive.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Infrastructure.Data
+namespace LotusFive.Infrastructure.Data
 {
     public class AppDbContext : DbContext, IAppDbContext
     {

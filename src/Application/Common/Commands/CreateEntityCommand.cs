@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
+using LotusFive.Application.Common.Interfaces;
 using MediatR;
 
-namespace Application.Common.Commands
+namespace LotusFive.Application.Common.Commands
 {
     public record CreateEntityCommand<TEntity>(TEntity Entity) : IRequest<TEntity> where TEntity : class;
 

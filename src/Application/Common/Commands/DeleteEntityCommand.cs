@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Common;
+using LotusFive.Application.Common.Interfaces;
+using LotusFive.Domain.Common;
 using MediatR;
 
-namespace Application.Common.Commands
+namespace LotusFive.Application.Common.Commands
 {
     public record DeleteEntityCommand<TEntity, TKey>(TKey Id) : IRequest<bool> where TEntity : class, IEntity<TKey>;
 

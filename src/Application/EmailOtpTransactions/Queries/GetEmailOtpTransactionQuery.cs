@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
-using Domain.Entities;
+using LotusFive.Application.Common.Interfaces;
+using LotusFive.Domain.Entities;
 using MediatR;
 
-namespace Application.EmailOtpTransactions.Queries
+namespace LotusFive.Application.EmailOtpTransactions.Queries
 {
     public record GetEmailOtpTransactionQuery(string EmailId, string Otp) : IRequest<EmailOtpTransaction?>;
 

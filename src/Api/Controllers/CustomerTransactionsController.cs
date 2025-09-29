@@ -1,8 +1,8 @@
-using Domain.Entities;
+using LotusFive.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace LotusFive.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

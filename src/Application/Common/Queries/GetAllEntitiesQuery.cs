@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
+using LotusFive.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Common.Queries
+namespace LotusFive.Application.Common.Queries
 {
     public record GetAllEntitiesQuery<TEntity>() : IRequest<IEnumerable<TEntity>> where TEntity : class;
 

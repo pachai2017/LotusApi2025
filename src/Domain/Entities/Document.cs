@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Domain.Common;
+using LotusFive.Domain.Common;
 
-namespace Domain.Entities
+namespace LotusFive.Domain.Entities
 {
     [Table("documents")]
     public class Document : IEntity<string>

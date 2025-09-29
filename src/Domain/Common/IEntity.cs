@@ -1,4 +1,4 @@
-namespace Domain.Common
+namespace LotusFive.Domain.Common
 {
     public interface IEntity<TKey>
     {
