@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/LotusApi2025
+/src/Api/bin/Debug/net8.0
+/src/Api/obj
+/src/Application/bin/Debug/net8.0
+/src/Application/obj/Debug/net8.0
+/src/Application/obj/Application.csproj.nuget.dgspec.json
+/src/Application/obj/Application.csproj.nuget.g.props
+/src/Application/obj/Application.csproj.nuget.g.targets
+/src/Application/obj/project.assets.json
+/src/Application/obj/project.nuget.cache
+/src/Domain/bin/Debug/net8.0
+/src/Domain/obj/Debug/net8.0
+/src/Domain/obj
+/src/Infrastructure/bin/Debug/net8.0
+/src/Infrastructure/obj/Debug/net8.0
+/src/Infrastructure/obj
