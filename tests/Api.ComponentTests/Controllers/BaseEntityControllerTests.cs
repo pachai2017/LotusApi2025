@@ -86,6 +86,21 @@ public class BaseEntityControllerTests
     }
 
     [Fact]
+    public async Task Update_ShouldReturnNotFound_WhenMediatorReturnsNull()
+    {
+        // Arrange
+        _mediatorMock
+            .Setup(m => m.Send(It.IsAny<UpdateEntityCommand<TestEntity, int>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((TestEntity?)null);
+
+        // Act
+        var result = await _controller.Update(5, new TestEntity { Id = 5 }, CancellationToken.None);
+
+        // Assert
+        result.Should().BeOfType<NotFoundResult>();
+    }
+
+    [Fact]
     public async Task Delete_ShouldReturnNoContent_WhenMediatorConfirmsDeletion()
     {
         // Arrange
@@ -98,6 +113,40 @@ public class BaseEntityControllerTests
 
         // Assert
         result.Should().BeOfType<NoContentResult>();
+    }
+
+    [Fact]
+    public async Task Delete_ShouldReturnNotFound_WhenMediatorReportsMissingEntity()
+    {
+        // Arrange
+        _mediatorMock
+            .Setup(m => m.Send(It.IsAny<DeleteEntityCommand<TestEntity, int>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+
+        // Act
+        var result = await _controller.Delete(10, CancellationToken.None);
+
+        // Assert
+        result.Should().BeOfType<NotFoundResult>();
+    }
+
+    [Fact]
+    public async Task Create_ShouldReturnCreatedAtActionWithEntity()
+    {
+        // Arrange
+        var entity = new TestEntity { Id = 11, Name = "Created" };
+        _mediatorMock
+            .Setup(m => m.Send(It.IsAny<CreateEntityCommand<TestEntity>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(entity);
+
+        // Act
+        var result = await _controller.Create(entity, CancellationToken.None);
+
+        // Assert
+        var created = result.Result.Should().BeOfType<CreatedAtActionResult>().Which;
+        created.ActionName.Should().Be(nameof(TestEntityController.GetById));
+        created.Value.Should().Be(entity);
+        created.RouteValues.Should().ContainKey("id").WhoseValue.Should().Be(entity.Id);
     }
 
     private sealed class TestEntity : IEntity<int>
