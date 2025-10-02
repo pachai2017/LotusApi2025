@@ -47,7 +47,12 @@ namespace LotusFive.Api.Controllers
         }
     }
 
-    public record LoginRequest(
-        [property: Required] string Username,
-        [property: Required] string Password);
+    public class LoginRequest
+    {
+        [Required]
+        public string Username { get; set; } = null!;
+
+        [Required]
+        public string Password { get; set; } = null!;
+    }
 }
