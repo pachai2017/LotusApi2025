@@ -1,6 +1,7 @@
 using LotusFive.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace LotusFive.Api.Controllers
 {
@@ -8,7 +9,7 @@ namespace LotusFive.Api.Controllers
     [Route("api/[controller]")]
     public class CurrencyRatesController : BaseEntityController<CurrencyRate, string>
     {
-        public CurrencyRatesController(IMediator mediator) : base(mediator)
+        public CurrencyRatesController(IMediator mediator, ILogger<BaseEntityController<CurrencyRate, string>> logger) : base(mediator, logger)
         {
         }
     }
