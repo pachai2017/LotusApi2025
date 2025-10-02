@@ -14,12 +14,13 @@ namespace LotusFive.Application
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
-                cfg.AddOpenRequestHandlerWithResponse(typeof(GetAllEntitiesQuery<>), typeof(GetAllEntitiesQueryHandler<>));
-                cfg.AddOpenRequestHandlerWithResponse(typeof(GetEntityByIdQuery<,>), typeof(GetEntityByIdQueryHandler<,>));
-                cfg.AddOpenRequestHandlerWithResponse(typeof(CreateEntityCommand<>), typeof(CreateEntityCommandHandler<>));
-                cfg.AddOpenRequestHandlerWithResponse(typeof(UpdateEntityCommand<,>), typeof(UpdateEntityCommandHandler<,>));
-                cfg.AddOpenRequestHandlerWithResponse(typeof(DeleteEntityCommand<,>), typeof(DeleteEntityCommandHandler<,>));
             });
+
+            services.AddTransient(typeof(IRequestHandler<,>), typeof(GetAllEntitiesQueryHandler<>));
+            services.AddTransient(typeof(IRequestHandler<,>), typeof(GetEntityByIdQueryHandler<,>));
+            services.AddTransient(typeof(IRequestHandler<,>), typeof(CreateEntityCommandHandler<>));
+            services.AddTransient(typeof(IRequestHandler<,>), typeof(UpdateEntityCommandHandler<,>));
+            services.AddTransient(typeof(IRequestHandler<,>), typeof(DeleteEntityCommandHandler<,>));
             return services;
         }
     }
